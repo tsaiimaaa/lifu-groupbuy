@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>理膚寶水親友員購價</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap">
 <style>
@@ -177,12 +182,21 @@ body {
 /* ── Product row ── */
 .product-row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto 1fr auto;
   gap: 8px 12px;
   align-items: center;
   padding: 12px 4px;
   border-bottom: 1px solid var(--border);
   transition: background .1s;
+}
+.product-img {
+  width: 64px; height: 64px; object-fit: cover;
+  border-radius: 6px; flex-shrink: 0;
+  display: block;
+}
+.product-img-ph {
+  width: 64px; height: 64px; border-radius: 6px; flex-shrink: 0;
+  background: var(--surface-2);
 }
 .product-row:hover { background: var(--surface-2); border-radius: 6px; }
 .product-row:last-child { border-bottom: none; }
@@ -445,6 +459,8 @@ body {
   .main { padding: 24px 20px 160px; }
 }
 </style>
+</head>
+<body>
 
 <!-- Header -->
 <header class="site-header">
@@ -467,13 +483,1224 @@ body {
 
 <!-- Category tabs -->
 <nav class="cat-nav">
-  <div class="cat-nav-inner" id="cat-tabs"></div>
+  <div class="cat-nav-inner" id="cat-tabs">
+<button class="cat-tab active" data-cat-id="b5" onclick="switchCat('b5')">💧 B5 修復系列</button>
+<button class="cat-tab" data-cat-id="toleriane" onclick="switchCat('toleriane')">🌿 多容安系列</button>
+<button class="cat-tab" data-cat-id="effaclar" onclick="switchCat('effaclar')">⚡ Effaclar 控油系列</button>
+<button class="cat-tab" data-cat-id="sunscreen" onclick="switchCat('sunscreen')">☀️ 防曬系列</button>
+<button class="cat-tab" data-cat-id="body" onclick="switchCat('body')">🛁 身體護理</button>
+<button class="cat-tab" data-cat-id="advanced" onclick="switchCat('advanced')">✨ 抗老 & 美白系列</button>
+</div>
 </nav>
 
 <!-- Main -->
 <main class="main" id="app">
 <div class="notice">🚚 由台北公司出貨，運費由所有訂購者均攤，結單後通知運費金額</div>
-<div id="cat-sections"></div>
+<div id="cat-sections">
+<div class="cat-section visible" id="sec-b5">
+  <div class="cat-heading"><span>💧</span> B5 修復系列</div>
+  <div class="product-row" id="row-1">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900IXJ5U/000001_1749782056.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">臉部溫泉舒緩噴液 300ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $790</span>
+        <span class="price-group">員購 $474</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(1, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-1">0</div>
+      <button class="qty-btn plus" onclick="changeQty(1, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-2">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900BNL1B/000001_1784000181.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">B5全面修復保濕化妝水 200ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $920</span>
+        <span class="price-group">員購 $552</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(2, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-2">0</div>
+      <button class="qty-btn plus" onclick="changeQty(2, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-3">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A90096VP6/000001_1714494564.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全面修復潤唇膏 7.5ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $420</span>
+        <span class="price-group">員購 $252</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(3, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-3">0</div>
+      <button class="qty-btn plus" onclick="changeQty(3, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-4">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">全面修復護手霜 50ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $420</span>
+        <span class="price-group">員購 $252</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(4, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-4">0</div>
+      <button class="qty-btn plus" onclick="changeQty(4, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-5">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JSPRH/000001_1773040538.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全面舒痕修復凝膠 40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $680</span>
+        <span class="price-group">員購 $408</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(5, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-5">0</div>
+      <button class="qty-btn plus" onclick="changeQty(5, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-6">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900K1VKL/000001_1783393928.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">B5瞬效全面修復精華 30ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,630</span>
+        <span class="price-group">員購 $978</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(6, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-6">0</div>
+      <button class="qty-btn plus" onclick="changeQty(6, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-7">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JQ0NQ/000001_1784000400.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">B5+全面修復霜（升級版）40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $520</span>
+        <span class="price-group">員購 $312</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(7, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-7">0</div>
+      <button class="qty-btn plus" onclick="changeQty(7, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-8">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JN6Y7/000001_1784000155.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">B5+全面修復霜（升級版）100ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $920</span>
+        <span class="price-group">員購 $552</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(8, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-8">0</div>
+      <button class="qty-btn plus" onclick="changeQty(8, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-9">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900G1HG6/000001_1784000172.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">B5全面修復凝乳 40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(9, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-9">0</div>
+      <button class="qty-btn plus" onclick="changeQty(9, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-10">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900IYI1S/000001_1750408487.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">B5全面修復保濕潔膚露 100ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $600</span>
+        <span class="price-group">員購 $360</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(10, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-10">0</div>
+      <button class="qty-btn plus" onclick="changeQty(10, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-11">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900IYI4O/000001_1750408730.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">B5全面修復保濕潔膚露 200ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $960</span>
+        <span class="price-group">員購 $576</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(11, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-11">0</div>
+      <button class="qty-btn plus" onclick="changeQty(11, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-12">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">B5全面修復保濕面膜（升級版）5片</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,000</span>
+        <span class="price-group">員購 $600</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(12, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-12">0</div>
+      <button class="qty-btn plus" onclick="changeQty(12, 1)">＋</button>
+    </div>
+  </div>
+</div>
+<div class="cat-section" id="sec-toleriane">
+  <div class="cat-heading"><span>🌿</span> 多容安系列</div>
+  <div class="product-row" id="row-13">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A9009EG79/000001_1588571426.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安舒緩保濕面霜 40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $890</span>
+        <span class="price-group">員購 $534</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(13, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-13">0</div>
+      <button class="qty-btn plus" onclick="changeQty(13, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-14">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A9009EG2I/000001_1784000141.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安舒緩濕潤乳液 40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $890</span>
+        <span class="price-group">員購 $534</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(14, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-14">0</div>
+      <button class="qty-btn plus" onclick="changeQty(14, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-15">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900HXNPG/000001_1728462940.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安超極效舒緩修護精華乳 輕潤型</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(15, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-15">0</div>
+      <button class="qty-btn plus" onclick="changeQty(15, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-16">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900K1PJ5/000001_1779761685.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安清潔卸粧乳液 400ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,080</span>
+        <span class="price-group">員購 $648</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(16, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-16">0</div>
+      <button class="qty-btn plus" onclick="changeQty(16, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-17">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900I99TE/000001_1784000173.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安泡沫洗面乳 125ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $800</span>
+        <span class="price-group">員購 $480</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(17, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-17">0</div>
+      <button class="qty-btn plus" onclick="changeQty(17, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-18">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900ANWRH/000001_1784000185.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安舒緩保濕化妝水 200ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $980</span>
+        <span class="price-group">員購 $588</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(18, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-18">0</div>
+      <button class="qty-btn plus" onclick="changeQty(18, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-19">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900ANWSM/000001_1784000165.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安舒緩保濕化妝水 400ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,380</span>
+        <span class="price-group">員購 $828</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(19, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-19">0</div>
+      <button class="qty-btn plus" onclick="changeQty(19, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-20">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900C1ZQ5/000001_1717304366.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安超極效舒緩修護精華乳 清爽型</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(20, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-20">0</div>
+      <button class="qty-btn plus" onclick="changeQty(20, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-21">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900C33V4/000001_1714494641.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安超極效舒敏眼霜 20ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,030</span>
+        <span class="price-group">員購 $618</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(21, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-21">0</div>
+      <button class="qty-btn plus" onclick="changeQty(21, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-22">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900FUZ3U/000001_1717304465.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安夜間超效修護精華乳 40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,030</span>
+        <span class="price-group">員購 $618</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(22, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-22">0</div>
+      <button class="qty-btn plus" onclick="changeQty(22, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-23">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JNEM2/000001_1784000191.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安舒緩保濕修護精華 30ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,630</span>
+        <span class="price-group">員購 $978</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(23, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-23">0</div>
+      <button class="qty-btn plus" onclick="changeQty(23, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-24">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900J3J39/000001_1754903935.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安舒緩保濕高效潔顏慕斯 150ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $730</span>
+        <span class="price-group">員購 $438</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(24, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-24">0</div>
+      <button class="qty-btn plus" onclick="changeQty(24, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-25">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900J5EZP/000001_1755680503.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">多容安清爽保濕卸妝潔膚水 400ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $830</span>
+        <span class="price-group">員購 $498</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(25, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-25">0</div>
+      <button class="qty-btn plus" onclick="changeQty(25, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-26">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">多容安舒緩保濕卸妝潔膚水 400ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $830</span>
+        <span class="price-group">員購 $498</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(26, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-26">0</div>
+      <button class="qty-btn plus" onclick="changeQty(26, 1)">＋</button>
+    </div>
+  </div>
+</div>
+<div class="cat-section" id="sec-effaclar">
+  <div class="cat-heading"><span>⚡</span> Effaclar 控油系列</div>
+  <div class="product-row" id="row-27">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900I6P86/000001_1786770147.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">青春潔膚凝膠+M 200ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $690</span>
+        <span class="price-group">員購 $414</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(27, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-27">0</div>
+      <button class="qty-btn plus" onclick="changeQty(27, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-28">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900K48CY/000001_1786769534.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">青春潔膚凝膠+M 400ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $950</span>
+        <span class="price-group">員購 $570</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(28, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-28">0</div>
+      <button class="qty-btn plus" onclick="changeQty(28, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-29">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900AQJQ5/000001_1780298175.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">深層控油泡沫洗面乳 125ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $550</span>
+        <span class="price-group">員購 $330</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(29, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-29">0</div>
+      <button class="qty-btn plus" onclick="changeQty(29, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-30">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900I6P7H/000001_1734595526.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">淨透煥膚調理化妝水 200ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $950</span>
+        <span class="price-group">員購 $570</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(30, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-30">0</div>
+      <button class="qty-btn plus" onclick="changeQty(30, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-31">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JKLP9/000001_1766142086.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">淨透煥膚極效精華 Effaclar K(+) 40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,010</span>
+        <span class="price-group">員購 $606</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(31, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-31">0</div>
+      <button class="qty-btn plus" onclick="changeQty(31, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-32">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900K5E4N/000001_1786769231.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">極效三重酸煥膚精華 30ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,630</span>
+        <span class="price-group">員購 $978</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(32, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-32">0</div>
+      <button class="qty-btn plus" onclick="changeQty(32, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-33">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900K1WK6/000001_1786769725.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">淨痘無瑕極效精華 40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $980</span>
+        <span class="price-group">員購 $588</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(33, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-33">0</div>
+      <button class="qty-btn plus" onclick="changeQty(33, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-34">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">淨痘無瑕極效精華 15ml<span class="badge badge-dd">DD獨家</span></div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $379</span>
+        <span class="price-group">員購 $227</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(34, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-34">0</div>
+      <button class="qty-btn plus" onclick="changeQty(34, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-35">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">淨膚調理舒緩凝乳 40ml<span class="badge badge-dd">DD獨家</span></div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $880</span>
+        <span class="price-group">員購 $528</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(35, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-35">0</div>
+      <button class="qty-btn plus" onclick="changeQty(35, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-36">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">淨膚調理舒緩潔膚乳 200ml<span class="badge badge-dd">DD獨家</span></div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $660</span>
+        <span class="price-group">員購 $396</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(36, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-36">0</div>
+      <button class="qty-btn plus" onclick="changeQty(36, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-39">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A90096VKG/000001_1622519018.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">瞬效控油噴霧 150ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $540</span>
+        <span class="price-group">員購 $324</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(39, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-39">0</div>
+      <button class="qty-btn plus" onclick="changeQty(39, 1)">＋</button>
+    </div>
+  </div>
+</div>
+<div class="cat-section" id="sec-sunscreen">
+  <div class="cat-heading"><span>☀️</span> 防曬系列</div>
+  <div class="product-row" id="row-40">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">安得利清爽防曬噴霧 SPF50 PA++++ 75ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $940</span>
+        <span class="price-group">員購 $564</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(40, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-40">0</div>
+      <button class="qty-btn plus" onclick="changeQty(40, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-41">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JSQ4X/000001_1773045300.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">安得利溫和極效防曬乳 50ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $850</span>
+        <span class="price-group">員購 $510</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(41, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-41">0</div>
+      <button class="qty-btn plus" onclick="changeQty(41, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-42">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JXEO5/000001_1783523607.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">安得利清爽極效夏卡防曬液 Reno 50ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $940</span>
+        <span class="price-group">員購 $564</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(42, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-42">0</div>
+      <button class="qty-btn plus" onclick="changeQty(42, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-43">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900K8D1N/000001_1784285951.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">安得利控油防曬液 50ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $940</span>
+        <span class="price-group">員購 $564</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(43, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-43">0</div>
+      <button class="qty-btn plus" onclick="changeQty(43, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-44">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A90096VH9/000001_1692932732.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">安得利嬰兒防曬乳 SPF50+</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $850</span>
+        <span class="price-group">員購 $510</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(44, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-44">0</div>
+      <button class="qty-btn plus" onclick="changeQty(44, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-45">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">安得利KA+極效防曬乳<span class="badge badge-dd">DD獨家</span></div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $910</span>
+        <span class="price-group">員購 $546</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(45, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-45">0</div>
+      <button class="qty-btn plus" onclick="changeQty(45, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-46">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900ITVN7/000001_1784000452.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">安得利淡斑淨亮極效夏卡防曬液 50ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(46, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-46">0</div>
+      <button class="qty-btn plus" onclick="changeQty(46, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-47">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900ITVNA/000001_1757904705.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">安得利兒童夏卡防曬 50ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(47, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-47">0</div>
+      <button class="qty-btn plus" onclick="changeQty(47, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-48">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900ITVNQ/000001_1752245394.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">安得利親膚防曬乳 150ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,480</span>
+        <span class="price-group">員購 $888</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(48, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-48">0</div>
+      <button class="qty-btn plus" onclick="changeQty(48, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-50">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900I6P84/000001_1784000209.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全護清爽防曬液 UVA PRO 透明色</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(50, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-50">0</div>
+      <button class="qty-btn plus" onclick="changeQty(50, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-51">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A90097L8P/000001_1784000243.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全護清爽防曬液 UVA PRO 潤色</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(51, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-51">0</div>
+      <button class="qty-btn plus" onclick="changeQty(51, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-52">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A90097L8R/000001_1716960964.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全護清爽防曬BB霜 UVA PRO 自然色01</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(52, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-52">0</div>
+      <button class="qty-btn plus" onclick="changeQty(52, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-53">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900F8TQS/000001_1716961077.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全護清爽防曬亮白乳 UVA PRO 30ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(53, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-53">0</div>
+      <button class="qty-btn plus" onclick="changeQty(53, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-54">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900F0S76/000001_1784000247.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全護極致抗油光防曬亮白乳 UVA PRO 30ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(54, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-54">0</div>
+      <button class="qty-btn plus" onclick="changeQty(54, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-55">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900IE0IE/000001_1784000253.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全護清透亮顏防曬隔離乳 30ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(55, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-55">0</div>
+      <button class="qty-btn plus" onclick="changeQty(55, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-56">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JPZBB/000001_1784000417.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全護清透亮顏防曬隔離乳 50ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,350</span>
+        <span class="price-group">員購 $810</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(56, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-56">0</div>
+      <button class="qty-btn plus" onclick="changeQty(56, 1)">＋</button>
+    </div>
+  </div>
+</div>
+<div class="cat-section" id="sec-body">
+  <div class="cat-heading"><span>🛁</span> 身體護理</div>
+  <div class="product-row" id="row-57">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A90096VML/000001_1588573845.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">滋養皂</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $390</span>
+        <span class="price-group">員購 $234</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(57, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-57">0</div>
+      <button class="qty-btn plus" onclick="changeQty(57, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-58">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JSQ1A/000001_1773044355.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">滋養修護潤唇膏 4.7ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $390</span>
+        <span class="price-group">員購 $234</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(58, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-58">0</div>
+      <button class="qty-btn plus" onclick="changeQty(58, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-59">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A90096VEG/000001_1754881090.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">親膚舒敏沐浴露 750ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $950</span>
+        <span class="price-group">員購 $570</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(59, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-59">0</div>
+      <button class="qty-btn plus" onclick="changeQty(59, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-60">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900I6P99/000001_1734595747.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">理必佳滋潤沐浴乳 200ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $640</span>
+        <span class="price-group">員購 $384</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(60, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-60">0</div>
+      <button class="qty-btn plus" onclick="changeQty(60, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-61">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A90096VLF/000001_1588574380.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">理必佳滋潤沐浴乳 400ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $990</span>
+        <span class="price-group">員購 $594</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(61, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-61">0</div>
+      <button class="qty-btn plus" onclick="changeQty(61, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-62">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900J3NZY/000001_1756456510.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">親膚舒敏沐浴露（補充包）400ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $480</span>
+        <span class="price-group">員購 $288</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(62, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-62">0</div>
+      <button class="qty-btn plus" onclick="changeQty(62, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-63">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900IBZUN/000001_1738808076.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">理必佳超極效舒緩滋潤霜 AP MAX 200ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,030</span>
+        <span class="price-group">員購 $618</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(63, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-63">0</div>
+      <button class="qty-btn plus" onclick="changeQty(63, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-64">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900K1PJK/000001_1779761872.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">理必佳超極效舒緩滋潤霜 AP MAX 400ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,780</span>
+        <span class="price-group">員購 $1,068</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(64, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-64">0</div>
+      <button class="qty-btn plus" onclick="changeQty(64, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-65">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900IAEMZ/000001_1741259634.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">深層淨化抗屑洗髮露 200ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,100</span>
+        <span class="price-group">員購 $660</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(65, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-65">0</div>
+      <button class="qty-btn plus" onclick="changeQty(65, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-66">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">敏感性頭皮溫和洗髮露 400ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $910</span>
+        <span class="price-group">員購 $546</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(66, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-66">0</div>
+      <button class="qty-btn plus" onclick="changeQty(66, 1)">＋</button>
+    </div>
+  </div>
+</div>
+<div class="cat-section" id="sec-advanced">
+  <div class="cat-heading"><span>✨</span> 抗老 & 美白系列</div>
+  <div class="product-row" id="row-67">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900FD220/000001_1659685398.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全日長效玻尿酸保濕修護眼霜</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $930</span>
+        <span class="price-group">員購 $558</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(67, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-67">0</div>
+      <button class="qty-btn plus" onclick="changeQty(67, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-68">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900K8D1J/000001_1784285822.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全日長效玻尿酸修護保濕乳 清爽型 40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $860</span>
+        <span class="price-group">員購 $516</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(68, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-68">0</div>
+      <button class="qty-btn plus" onclick="changeQty(68, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-69">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900BXRWN/000001_1654748368.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">全日長效玻尿酸修護保濕乳 潤澤型 40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $860</span>
+        <span class="price-group">員購 $516</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(69, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-69">0</div>
+      <button class="qty-btn plus" onclick="changeQty(69, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-70">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JSQ85/000001_1773047041.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">B5彈潤修復凝乳 40ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,400</span>
+        <span class="price-group">員購 $840</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(70, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-70">0</div>
+      <button class="qty-btn plus" onclick="changeQty(70, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-71">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA2GA900B4V59/000001_1636609437.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">B5彈潤修復眼霜 15ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $980</span>
+        <span class="price-group">員購 $588</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(71, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-71">0</div>
+      <button class="qty-btn plus" onclick="changeQty(71, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-72">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900G9NCZ/000001_1719918772.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">B5彈潤修復多效撫紋眼部精華 15ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,520</span>
+        <span class="price-group">員購 $912</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(72, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-72">0</div>
+      <button class="qty-btn plus" onclick="changeQty(72, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-73">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900II07K/000001_1784000361.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">A醇緊緻抗痕精華 30ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,840</span>
+        <span class="price-group">員購 $1,104</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(73, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-73">0</div>
+      <button class="qty-btn plus" onclick="changeQty(73, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-74">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">B5彈潤修復超導安瓶</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,680</span>
+        <span class="price-group">員購 $1,008</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(74, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-74">0</div>
+      <button class="qty-btn plus" onclick="changeQty(74, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-75">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900J3NYX/000001_1784000381.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">極效B5彈潤超修復精華 30ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,840</span>
+        <span class="price-group">員購 $1,104</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(75, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-75">0</div>
+      <button class="qty-btn plus" onclick="changeQty(75, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-76">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900J42FL/000001_1789020646.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">極效B5彈潤超修復精華 50ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $2,350</span>
+        <span class="price-group">員購 $1,410</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(76, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-76">0</div>
+      <button class="qty-btn plus" onclick="changeQty(76, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-77">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JEIU1/000001_1764241829.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">極效B5彈潤超修復乳霜 50ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,800</span>
+        <span class="price-group">員購 $1,080</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(77, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-77">0</div>
+      <button class="qty-btn plus" onclick="changeQty(77, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-78">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900IBZSD/000001_1784000358.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">C12肌光活膚精華 30ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $2,080</span>
+        <span class="price-group">員購 $1,248</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(78, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-78">0</div>
+      <button class="qty-btn plus" onclick="changeQty(78, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-79">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900HP0N8/000001_1784000367.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">MELA B3 淡斑淨亮精華 30ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $2,080</span>
+        <span class="price-group">員購 $1,248</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(79, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-79">0</div>
+      <button class="qty-btn plus" onclick="changeQty(79, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-80">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900J8LZ9/000001_1789020257.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">MELA B3 淡斑淨亮洗面露</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $1,150</span>
+        <span class="price-group">員購 $690</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(80, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-80">0</div>
+      <button class="qty-btn plus" onclick="changeQty(80, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-81">
+    <img class="product-img" src="https://img.pchome.com.tw/cs/items/DDCA10A900JPZ7L/000001_1789020350.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+    <div>
+      <div class="product-name">MELA B3 淡斑淨亮精華 50ml</div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $2,940</span>
+        <span class="price-group">員購 $1,764</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(81, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-81">0</div>
+      <button class="qty-btn plus" onclick="changeQty(81, 1)">＋</button>
+    </div>
+  </div>
+  <div class="product-row" id="row-83">
+    <div class="product-img-ph"></div>
+    <div>
+      <div class="product-name">柔理可極效舒緩保濕精華乳 40ml<span class="badge badge-dd">DD獨家</span></div>
+      <div class="product-prices">
+        <span class="price-retail">原價 $950</span>
+        <span class="price-group">員購 $570</span>
+      </div>
+    </div>
+    <div class="qty-control">
+      <button class="qty-btn minus" onclick="changeQty(83, -1)" disabled>−</button>
+      <div class="qty-num" id="qty-83">0</div>
+      <button class="qty-btn plus" onclick="changeQty(83, 1)">＋</button>
+    </div>
+  </div>
+</div>
+</div>
 
   <div class="admin-link">
     <a href="#" onclick="toggleAdmin(); return false;">管理者後台</a>
@@ -708,60 +1935,82 @@ const CATEGORIES = [
   }
 ];
 
+const PRODUCT_IMGS = {
+  1:  'https://img.pchome.com.tw/cs/items/DDCA10A900IXJ5U/000001_1749782056.jpg',
+  2:  'https://img.pchome.com.tw/cs/items/DDCA10A900BNL1B/000001_1784000181.jpg',
+  3:  'https://img.pchome.com.tw/cs/items/DDCA10A90096VP6/000001_1714494564.jpg',
+  5:  'https://img.pchome.com.tw/cs/items/DDCA10A900JSPRH/000001_1773040538.jpg',
+  6:  'https://img.pchome.com.tw/cs/items/DDCA10A900K1VKL/000001_1783393928.jpg',
+  7:  'https://img.pchome.com.tw/cs/items/DDCA10A900JQ0NQ/000001_1784000400.jpg',
+  8:  'https://img.pchome.com.tw/cs/items/DDCA10A900JN6Y7/000001_1784000155.jpg',
+  9:  'https://img.pchome.com.tw/cs/items/DDCA10A900G1HG6/000001_1784000172.jpg',
+  10: 'https://img.pchome.com.tw/cs/items/DDCA10A900IYI1S/000001_1750408487.jpg',
+  11: 'https://img.pchome.com.tw/cs/items/DDCA10A900IYI4O/000001_1750408730.jpg',
+  13: 'https://img.pchome.com.tw/cs/items/DDCA10A9009EG79/000001_1588571426.jpg',
+  14: 'https://img.pchome.com.tw/cs/items/DDCA10A9009EG2I/000001_1784000141.jpg',
+  15: 'https://img.pchome.com.tw/cs/items/DDCA10A900HXNPG/000001_1728462940.jpg',
+  16: 'https://img.pchome.com.tw/cs/items/DDCA10A900K1PJ5/000001_1779761685.jpg',
+  17: 'https://img.pchome.com.tw/cs/items/DDCA10A900I99TE/000001_1784000173.jpg',
+  18: 'https://img.pchome.com.tw/cs/items/DDCA10A900ANWRH/000001_1784000185.jpg',
+  19: 'https://img.pchome.com.tw/cs/items/DDCA10A900ANWSM/000001_1784000165.jpg',
+  20: 'https://img.pchome.com.tw/cs/items/DDCA10A900C1ZQ5/000001_1717304366.jpg',
+  21: 'https://img.pchome.com.tw/cs/items/DDCA10A900C33V4/000001_1714494641.jpg',
+  22: 'https://img.pchome.com.tw/cs/items/DDCA10A900FUZ3U/000001_1717304465.jpg',
+  23: 'https://img.pchome.com.tw/cs/items/DDCA10A900JNEM2/000001_1784000191.jpg',
+  24: 'https://img.pchome.com.tw/cs/items/DDCA10A900J3J39/000001_1754903935.jpg',
+  25: 'https://img.pchome.com.tw/cs/items/DDCA10A900J5EZP/000001_1755680503.jpg',
+  27: 'https://img.pchome.com.tw/cs/items/DDCA10A900I6P86/000001_1786770147.jpg',
+  28: 'https://img.pchome.com.tw/cs/items/DDCA10A900K48CY/000001_1786769534.jpg',
+  29: 'https://img.pchome.com.tw/cs/items/DDCA10A900AQJQ5/000001_1780298175.jpg',
+  30: 'https://img.pchome.com.tw/cs/items/DDCA10A900I6P7H/000001_1734595526.jpg',
+  31: 'https://img.pchome.com.tw/cs/items/DDCA10A900JKLP9/000001_1766142086.jpg',
+  32: 'https://img.pchome.com.tw/cs/items/DDCA10A900K5E4N/000001_1786769231.jpg',
+  33: 'https://img.pchome.com.tw/cs/items/DDCA10A900K1WK6/000001_1786769725.jpg',
+  39: 'https://img.pchome.com.tw/cs/items/DDCA10A90096VKG/000001_1622519018.jpg',
+  41: 'https://img.pchome.com.tw/cs/items/DDCA10A900JSQ4X/000001_1773045300.jpg',
+  42: 'https://img.pchome.com.tw/cs/items/DDCA10A900JXEO5/000001_1783523607.jpg',
+  43: 'https://img.pchome.com.tw/cs/items/DDCA10A900K8D1N/000001_1784285951.jpg',
+  44: 'https://img.pchome.com.tw/cs/items/DDCA10A90096VH9/000001_1692932732.jpg',
+  46: 'https://img.pchome.com.tw/cs/items/DDCA10A900ITVN7/000001_1784000452.jpg',
+  47: 'https://img.pchome.com.tw/cs/items/DDCA10A900ITVNA/000001_1757904705.jpg',
+  48: 'https://img.pchome.com.tw/cs/items/DDCA10A900ITVNQ/000001_1752245394.jpg',
+  50: 'https://img.pchome.com.tw/cs/items/DDCA10A900I6P84/000001_1784000209.jpg',
+  51: 'https://img.pchome.com.tw/cs/items/DDCA10A90097L8P/000001_1784000243.jpg',
+  52: 'https://img.pchome.com.tw/cs/items/DDCA10A90097L8R/000001_1716960964.jpg',
+  53: 'https://img.pchome.com.tw/cs/items/DDCA10A900F8TQS/000001_1716961077.jpg',
+  54: 'https://img.pchome.com.tw/cs/items/DDCA10A900F0S76/000001_1784000247.jpg',
+  55: 'https://img.pchome.com.tw/cs/items/DDCA10A900IE0IE/000001_1784000253.jpg',
+  56: 'https://img.pchome.com.tw/cs/items/DDCA10A900JPZBB/000001_1784000417.jpg',
+  57: 'https://img.pchome.com.tw/cs/items/DDCA10A90096VML/000001_1588573845.jpg',
+  58: 'https://img.pchome.com.tw/cs/items/DDCA10A900JSQ1A/000001_1773044355.jpg',
+  59: 'https://img.pchome.com.tw/cs/items/DDCA10A90096VEG/000001_1754881090.jpg',
+  60: 'https://img.pchome.com.tw/cs/items/DDCA10A900I6P99/000001_1734595747.jpg',
+  61: 'https://img.pchome.com.tw/cs/items/DDCA10A90096VLF/000001_1588574380.jpg',
+  62: 'https://img.pchome.com.tw/cs/items/DDCA10A900J3NZY/000001_1756456510.jpg',
+  63: 'https://img.pchome.com.tw/cs/items/DDCA10A900IBZUN/000001_1738808076.jpg',
+  64: 'https://img.pchome.com.tw/cs/items/DDCA10A900K1PJK/000001_1779761872.jpg',
+  65: 'https://img.pchome.com.tw/cs/items/DDCA10A900IAEMZ/000001_1741259634.jpg',
+  67: 'https://img.pchome.com.tw/cs/items/DDCA10A900FD220/000001_1659685398.jpg',
+  68: 'https://img.pchome.com.tw/cs/items/DDCA10A900K8D1J/000001_1784285822.jpg',
+  69: 'https://img.pchome.com.tw/cs/items/DDCA10A900BXRWN/000001_1654748368.jpg',
+  70: 'https://img.pchome.com.tw/cs/items/DDCA10A900JSQ85/000001_1773047041.jpg',
+  71: 'https://img.pchome.com.tw/cs/items/DDCA2GA900B4V59/000001_1636609437.jpg',
+  72: 'https://img.pchome.com.tw/cs/items/DDCA10A900G9NCZ/000001_1719918772.jpg',
+  73: 'https://img.pchome.com.tw/cs/items/DDCA10A900II07K/000001_1784000361.jpg',
+  75: 'https://img.pchome.com.tw/cs/items/DDCA10A900J3NYX/000001_1784000381.jpg',
+  76: 'https://img.pchome.com.tw/cs/items/DDCA10A900J42FL/000001_1789020646.jpg',
+  77: 'https://img.pchome.com.tw/cs/items/DDCA10A900JEIU1/000001_1764241829.jpg',
+  78: 'https://img.pchome.com.tw/cs/items/DDCA10A900IBZSD/000001_1784000358.jpg',
+  79: 'https://img.pchome.com.tw/cs/items/DDCA10A900HP0N8/000001_1784000367.jpg',
+  80: 'https://img.pchome.com.tw/cs/items/DDCA10A900J8LZ9/000001_1789020257.jpg',
+  81: 'https://img.pchome.com.tw/cs/items/DDCA10A900JPZ7L/000001_1789020350.jpg',
+};
+
 const cart = {}; // { productId: qty }
 let selectedPay = '';
 let currentOrders = {}; // { fbKey: orderObj } — loaded from Firebase
 
-/* ── Build UI ── */
-const tabsEl  = document.getElementById('cat-tabs');
-const secsEl  = document.getElementById('cat-sections');
-
-CATEGORIES.forEach((cat, i) => {
-  // Tab
-  const tab = document.createElement('button');
-  tab.className = 'cat-tab' + (i === 0 ? ' active' : '');
-  tab.textContent = cat.icon + ' ' + cat.name;
-  tab.dataset.catId = cat.id;
-  tab.onclick = () => switchCat(cat.id);
-  tabsEl.appendChild(tab);
-
-  // Section
-  const sec = document.createElement('div');
-  sec.className = 'cat-section' + (i === 0 ? ' visible' : '');
-  sec.id = 'sec-' + cat.id;
-
-  const h = document.createElement('div');
-  h.className = 'cat-heading';
-  h.innerHTML = `<span>${cat.icon}</span> ${cat.name}`;
-  sec.appendChild(h);
-
-  cat.products.forEach(p => {
-    const row = document.createElement('div');
-    row.className = 'product-row';
-    row.id = 'row-' + p.id;
-
-    let badgeHtml = '';
-    if (p.tag === 'DD獨家') badgeHtml = `<span class="badge badge-dd">DD獨家</span>`;
-    if (p.tag === '新品')   badgeHtml = `<span class="badge badge-new">新品</span>`;
-
-    row.innerHTML = `
-      <div>
-        <div class="product-name">${p.name}${badgeHtml}</div>
-        <div class="product-prices">
-          <span class="price-retail">原價 $${retailOriginal(p).toLocaleString()}</span>
-          <span class="price-group">員購 $${groupPrice(p).toLocaleString()}</span>
-        </div>
-      </div>
-      <div class="qty-control">
-        <button class="qty-btn minus" onclick="changeQty(${p.id}, -1)" disabled>−</button>
-        <div class="qty-num" id="qty-${p.id}">0</div>
-        <button class="qty-btn plus" onclick="changeQty(${p.id}, 1)">＋</button>
-      </div>`;
-    sec.appendChild(row);
-  });
-
-  secsEl.appendChild(sec);
-});
+/* ── UI pre-rendered as static HTML ── */
 
 /* ── Category switching ── */
 function switchCat(id) {
@@ -1169,6 +2418,10 @@ async function exportOrders() {
   URL.revokeObjectURL(url);
 }
 
+// init — updateTotals depends on DOM elements too
 // init
 updateTotals();
 </script>
+
+</body>
+</html>
